@@ -116,7 +116,7 @@ function install_cramfstools
 function install_ubireader
 {
     git clone --quiet --depth 1 --branch "main" https://github.com/jrspruitt/ubi_reader
-    (cd ubi_reader && $SUDO $PYTHON setup.py install)
+    (cd ubi_reader && poetry install)
     $SUDO rm -rf ubi_reader
 }
 
@@ -227,7 +227,8 @@ then
     echo "Please install the following required utilities: $NEEDED_UTILS"
     exit 1
 fi
-
+git clone --quiet --depth 1 --branch "main" https://github.com/jrspruitt/ubi_reader
+    (cd ubi_reader && $SUDO $PYTHON setup.py install)
 # Do the install(s)
 cd /tmp
 $SUDO $PKGCMD $PKGCMD_OPTS $PKG_CANDIDATES
